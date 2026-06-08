@@ -38,3 +38,21 @@ export function updateArticle(req, res) {
     res.status(404).json({ message: "Article non trouvé" });
   }
 }
+
+/**
+ * Méthode permettant de supprimer un article spécifique en fonction de son ID
+ */
+export function deleteArticle(req, res) {
+  const id = parseInt(req.params.id);
+  const index = articles.findIndex((a) => a.id === id);
+
+  if (index !== -1) {
+    const deletedArticle = articles.splice(index, 1)[0];
+    res.status(200).json({
+      message: "Article supprimé avec succès",
+      data: deletedArticle
+    });
+  } else {
+    res.status(404).json({ message: "Article non trouvé" });
+  }
+}
