@@ -16,7 +16,7 @@ app.use(express.json());
  */
 app.get("/", (req, res) => {
   res.status(200).json({
-    message: "Bienvenue sur l’API du blogue",
+    message: "Bienvenue sur l’API du blogue"
   });
 });
 
@@ -26,16 +26,11 @@ app.get("/", (req, res) => {
 app.use("/articles", articleRoutes);
 
 /**
- * Routes administrateur
- */
-app.use("/admin", adminRoutes);
-
-/**
  * Middleware 404 (toujours à la fin)
  */
 app.use((req, res) => {
   res.status(404).json({
-    message: "Route introuvable",
+    message: "Route introuvable"
   });
 });
 
