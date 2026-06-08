@@ -20,3 +20,21 @@ export function getArticleById(req, res) {
     res.status(404).json({ message: "Article non trouvé" }); // Si l'article n'est pas trouvé, retourner un message d'erreur avec un statut 404 Not Found
   }
 }
+
+/**
+ * Méthode permettant de mettre à jour un article spécifique en fonction de son ID
+ */
+export function updateArticle(req, res) {
+  const id = parseInt(req.params.id);
+  const index = articles.findIndex((a) => a.id === id);
+
+  if (index !== -1) {
+    articles[index] = { ...articles[index], ...req.body, id };
+    res.status(200).json({
+      message: "Article mis à jour avec succès",
+      data: articles[index]
+    });
+  } else {
+    res.status(404).json({ message: "Article non trouvé" });
+  }
+}

@@ -11,8 +11,7 @@ router.get("/:id", articleController.getArticleById);
 
 router.post("/", articleController.createArticle);
 
+// PUT /articles/:id - Met à jour un article spécifique en fonction de son ID
 router.put("/:id", articleController.updateArticle);
-
-router.delete("/:id", articleController.deleteArticle);
 
 export default router;
